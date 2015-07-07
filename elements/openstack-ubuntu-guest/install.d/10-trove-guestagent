@@ -6,5 +6,6 @@ set -o xtrace
 
 
 # Install the trove-guestagent package
+
 sudo apt-get install trove-guestagent
 
