@@ -1,0 +1,14 @@
+#!/bin/sh
+# CONTEXT: GUEST during PRE-CONSTRUCTION as ROOT
+# PURPOSE: Setup apt-repo list so that we can connect to Openstack Kilo's repo
+set -e
+set -o xtrace
+
+# Add Openstack Kilo repo.
+# Create a sources list file for Openstack Kilo.
+
+echo "deb http://ppa.launchpad.net/ubuntu-cloud-archive/kilo-staging/ubuntu "$(lsb_release -sc)" main
+deb-src http://ppa.launchpad.net/ubuntu-cloud-archive/kilo-staging/ubuntu "$(lsb_release -sc)" main " | sudo tee /etc/apt/sources.list.d/kilo.list
+
+# Reload local package database.
+apt-get update

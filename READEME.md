@@ -1,0 +1,1 @@
+## Image elements for building Trove guest images
