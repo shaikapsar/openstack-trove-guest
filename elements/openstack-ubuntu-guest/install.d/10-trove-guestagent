@@ -1,9 +1,12 @@
-#!/bin/sh
-# CONTEXT: GUEST during PRE-CONSTRUCTION as ROOT
-# PURPOSE: Install Openstack Trove Guest Agent
-set -e
-set -o xtrace
+#!/bin/bash
 
+if [ ${DIB_DEBUG_TRACE:-1} -gt 0 ]; then
+   set -x
+fi
+
+set -eu
+
+set -o pipefail
 
 # Install the trove-guestagent package
 
