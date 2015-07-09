@@ -1,1 +1,14 @@
 ## Image elements for building Trove guest images
+
+sudo apt-get install qemu-utils python-virtualenv -qy
+virtualenv .venv
+source .venv/bin/activate
+pip install dib-utils pyyaml
+
+export DIB_CLOUD_INIT_ETC_HOSTS=true
+export DIB_CLOUD_INIT_DATASOURCES="Ec2, ConfigDrive, OpenStack"
+export DIB_DEV_USER_USERNAME=ks
+export DIB_DEV_USER_PASSWORD=w8EmsJXTMaG0e97NK8lM
+export ELEMENTS_PATH=/home/sa709c/dib/diskimage-builder/elements:/home/sa709c/dib/trove-integration/scripts/files/elements:/home/sa709c/dib/tripleo-image-elements/elements:/home/sa709c/dib/openstack-trove-guest/elements
+
+disk-image-create  -a amd64 -o ubuntu-mysql ubuntu  openstack-ubuntu-guest
